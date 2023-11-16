@@ -1,0 +1,77 @@
+<br>
+<div class="text-center">
+  <h2>Delete Event List </h2>
+  <p> Showing all deletable events </p>
+</div>
+<div class="mt-4 p-5 bg-secondary rounded">
+  <div class="card mb-3">
+    <img src="/assets/Images/deleteevent.png" class="card-img-top" alt="...">
+    <div class="card text-dark bg-light mb-3">
+      <div class="card-body">
+        <div class="row row-cols-1 g-3">
+          <div class="col">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <!-- Table Header Row -->
+                  <th scope="col">Id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Start</th>
+                  <th scope="col">Duration</th>
+                  <th scope="col">Is Active</th>
+                  <th scope="col">Capacity</th>
+                  <th scope="col">Tickets Available</th>
+                  <th scope="col">Categories</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="records.length == 0">
+                  <th scope="row" colspan="8" class="text-center text-bold">No records found</th>
+                </tr>
+                <tr *ngFor="let record of records">
+                  <th scope="row">
+                    {{record.eventId}}
+                  </th>
+                  <td>
+                    {{record.eventName | transformName}}
+                  </td>
+                  <td style="width: 30%">
+                    {{record.eventDate| transformTime}}
+                  </td>
+                  <td>
+                    {{record.eventDuration | transformDuration}}
+                  </td>
+                  <!-- Is active display -->
+                  <td *ngIf="record.eventIsActive">
+                    <input type="checkbox" checked>
+                  </td>
+
+                  <td *ngIf="!record.eventIsActive">
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    {{record.eventCapacity}}
+                  </td>
+                  <td>
+                    {{record.eventTicketQty}}
+                  </td>
+                  <td>
+                    <ng-container *ngFor="let category of record.eventCategoriesList; let last = last">
+                      <span [class]="{'category-cell': true, 'last-cell': last}">
+                        {{ category }}
+                      </span>
+                    </ng-container>
+                  </td>
+                  <td>
+                    <button class="btn btn-danger" (click)="deleteEvent(record.eventId)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

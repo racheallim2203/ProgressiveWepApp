@@ -1,0 +1,61 @@
+<br>
+<div class="text-center">
+    <h2> Category List </h2>
+    <p> Showing all category details </p>
+</div>
+<div class="mt-4 p-5 bg-secondary rounded">
+    <div class="card mb-3">
+      <img src="/assets/Images/categorylist.png" class="card-img-top" alt="...">
+      <div class="card text-dark bg-light mb-3">
+        <div class="card-body">
+            <div class="row row-cols-1 g-3">
+                <div class="col">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <!-- Table Header Row -->
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Created Date</th>
+                        <th scope="col">Events Count</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="records.length == 0">
+                            <th scope="row" colspan="8" class="text-center text-bold">No records found</th>
+                        </tr>
+        
+                        <tr *ngFor="let record of records">
+                            <th scope="row">
+                                {{record.categoryId}}
+                            </th>
+                            <td>
+                                {{record.categoryName | transformName}}
+                            </td>
+                            <td style="width: 30%">
+                                {{record.categoryDescription}}
+                            </td>
+                            <td>
+                              <img [src]=record.categoryImage alt="Category Image" width="100">
+                            </td>
+                            <td>
+                              {{record.createdDate |transformTime}}
+                            </td>
+                            <td>
+                              {{record.eventsList.length}}
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" (click)="categoryDetails(record.categoryId)">Details</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

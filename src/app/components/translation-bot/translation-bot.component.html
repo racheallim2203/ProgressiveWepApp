@@ -1,0 +1,44 @@
+<br>
+<div class="text-center">
+  <h2>Translate Text</h2>
+  <p>Enter text to translate</p>
+</div>
+<div class="card-body">
+  <div class="mb-3">
+    <label for="translationLanguage" class="form-label">Select Target Language:</label>
+    <select class="form-select" [(ngModel)]="translationLanguage" id="translationLanguage" name="translationLanguage" required>
+      <!-- Add options for different languages here -->
+      <option value="ta">Tamil</option>
+      <option value="zh-CN">Chinese</option>
+      <option value="es">Spanish</option>
+
+      <!-- Add more languages as needed -->
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="translationText" class="form-label">Enter Text to Translate:</label>
+    <textarea [(ngModel)]="translationText" class="form-control border border-3 border-secondary"
+      id="translationText" placeholder="Enter Text" name="translationText" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-success border border-3 border-secondary" (click)="translateText()">Translate</button>
+</div>
+
+<div class="mt-4" *ngIf="translationResult">
+  <h3>Translation Result</h3>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>Text Entered:</th>
+        <td>{{ translationText }}</td>
+      </tr>
+      <tr>
+        <th>Target Language:</th>
+        <td>{{ translationLanguage }}</td>
+      </tr>
+      <tr>
+        <th>Translation:</th>
+        <td>{{ translationResult }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

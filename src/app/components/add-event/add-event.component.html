@@ -1,0 +1,85 @@
+<div class="container mt-3">
+  <div class="text-center">
+    <h2>Add Event</h2>
+    <p>Fill in event details & click submit</p>
+  </div>
+
+  <div class="mt-4 p-5 bg-secondary rounded">
+    <div class="card mb-3">
+      <img src="/assets/Images/addevent.png" class="card-img-top" alt="...">
+
+      <div class="mt-4 p-5 bg-light rounded shadow-lg">
+        <!-- <img src="/Images/addevent.png" class="card-img-top" alt="..."> -->
+        <form action="/mahesh/add-event">
+          <div class="form-group">
+            <label for="Name">Name</label>
+            <br>
+            <input type="text" [(ngModel)]="eventName" class="form-control" name="eventName"
+              placeholder="Enter event name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="Description">Event Description:</label>
+            <textarea  [(ngModel)]="eventDescription" class="form-control border border-3 border-secondary" id="Description" rows="3"
+              name="eventDescription" style="margin: 10px 0px 10px 0px"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="Image" class="form-label">Image:</label>
+            <input type="file" (change)="onImageSelected($event)"
+            class="form-control border border-3 border-secondary" name="categoryImage" accept="image/png, image/jpeg, image/jpg">
+          </div>
+
+          <div class="form-group">
+            <br>
+            <label for="Date">Start Date Time</label>
+            <br>
+            <input type="datetime-local" [(ngModel)]="eventDate" name="eventDate" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <br>
+            <label for="Time">Duration in Minutes</label>
+            <br>
+            <input type="number" [(ngModel)]="eventDuration" class="form-control" name="eventDuration"
+              placeholder="Event duration in Minutes" required>
+          </div>
+
+          <div class="form-group">
+            <br>
+            <label for="Active">Is Active</label>
+            <br>
+            <input type="checkbox" [(ngModel)]="eventActive" name="eventActive" checked>
+          </div>
+
+          <div class="form-group">
+            <br>
+            <label for="Capacity">Capacity</label>
+            <br>
+            <input type="text" [(ngModel)]="eventCapacity" class="form-control" name="eventCapacity"
+              placeholder="Event capacity">
+          </div>
+
+          <div class="form-group">
+            <br>
+            <label for="Tickets">Tickets Available</label>
+            <br>
+            <input type="text" [(ngModel)]="eventTicketQty" class="form-control" name="eventTickets"
+              placeholder="Tickets Available (optional)">
+          </div>
+
+          <div class="form-group">
+            <br>
+            <label for="Id"> Category Id</label>
+            <br>
+            <input type="text" [(ngModel)]="eventCategories" class="form-control" name="eventId"
+              placeholder="Enter category Id" required>
+            <br>
+          </div>
+          <button class="btn btn-success" (click)="saveEvent()">Add Event</button>
+          <!-- <button (click)="saveEvent()" class="btn btn-success border border-3 border-secondary">Submit</button> -->
+        </form>
+      </div>
+      <br>
+    </div>
+  </div>

@@ -1,0 +1,38 @@
+    <br>
+    <div class="container mt-3">
+    <div class="text-center">
+      <h2> Add Category </h2>
+      <p>Fill in category details and click submit</p>
+    </div>
+
+    <div class="mt-4 p-5 bg-secondary rounded">
+      <div class="card mb-3">
+        <img src="/assets/Images/addcategory.png" class="card-img-top" alt="...">
+        <div class="card text-dark bg-light mb-3">
+          <div class="card-body">
+                <div class="mb-3 mt-3">
+                  <label for="name" class="form-label ">Name: </label>
+                  <!-- A two-way data-binding syntax. The input value is bound to the categoryName property of the component. -->
+                  <input type="text" [(ngModel)]="categoryName" class="form-control border border-3 border-secondary" id="name"
+                    placeholder="Enter Name" name="categoryName" required>
+                </div>
+                <div class="form-group">
+                  <label for="Description">Description:</label>
+                  <textarea  [(ngModel)]="categoryDescription" class="form-control border border-3 border-secondary" id="Description" rows="3"
+                    placeholder="Enter Description" name="categoryDescription" style="margin: 10px 0px 10px 0px"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="Image" class="form-label">Image:</label>
+                  <!-- An event binding that listens for change events (like selecting a file) on the input.
+                  When the file input changes, the onFileSelected() method of the component is called, passing in the event object. -->
+                  <input type="file" (change)="onFileSelected($event)"
+                  class="form-control border border-3 border-secondary" name="categoryImage" accept="image/png, image/jpeg, image/jpg">
+                </div>
+
+                <!-- When the button is clicked, the saveCategory() method of the component is called, which likely handles form submission. -->
+                <button type="submit" class="btn btn-success border border-3 border-secondary" (click)="saveCategory()">Add Category</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

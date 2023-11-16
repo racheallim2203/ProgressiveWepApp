@@ -1,0 +1,53 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/bootstrap.min.css" rel="stylesheet">
+  <link href="/style.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+  <div class="container mt-3">
+    <img src="/assets/Images/eventpage.png" class="card-img-top" alt="...">
+    <div class="text-center">
+      <br>
+      <h3><b>Searched Event ID: {{records.eventId}}</b></h3>
+    </div>
+    <div class="mt-4 p-5 bg-secondary rounded">
+      <div class="card mb-3">
+        <div class="listcontainer">
+          <div class="panel panel-default">
+
+            <div class="panel-heading">Event Id:</div>
+            <div class="panel-body"> {{records.eventId}}</div>
+            <div class="panel-heading">Event Name:</div>
+            <div class="panel-body">{{records.eventName}}</div>
+            <div class="panel-heading">Event Description</div>
+            <div class="panel-body">{{records.eventDescription}}</div>
+
+            <!-- getting & displaying correct format for start date -->
+            <div class="panel-heading">Start Date Time:</div>
+            <div class="panel-body">{{records.eventDate| transformTime}}</div>
+
+            <!-- getting & displaying correct format for end date -->
+            <div class="panel-heading">End Date Time:</div>
+            <div class="panel-body">{{ records.eventDate | transformEndDate: records.eventDuration }}</div>
+
+            <!-- Displaying Formatted Duration Time:-->
+            <div class="panel-heading">Duration (Minutes):</div>
+            <div class="panel-body">{{records.eventDuration | transformDuration}}</div>
+            <div class="panel-heading">Is Active:</div>
+            <div class="panel-body">{{records.eventIsActive}}</div>
+            <div class="panel-heading">Capacity:</div>
+            <div class="panel-body">{{records.eventCapacity}}</div>
+            <div class="panel-heading">Tickets Available:</div>
+            <div class="panel-body">{{records.eventTicketQty}}</div>
+            <div class="panel-heading">Category Id:</div>
+            <div class="panel-body">{{records.eventCategoriesList}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

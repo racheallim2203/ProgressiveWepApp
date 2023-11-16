@@ -1,0 +1,83 @@
+<div class="mt-4 p-5 bg-secondary rounded">
+  <div class="card mb-3">
+    <img src="/assets/Images/categorypage.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <div class="text-center">
+        <h2> Category Detail: </h2>
+        <p> {{records.categoryName}} </p>
+      </div>
+      <div class="card text-dark bg-light mb-3" style="padding:3px">
+        <div style="padding:9px">
+          <p><strong>Category ID:</strong> {{records.categoryId}}</p>
+          <p><strong>Name:</strong> {{records.categoryName | transformName}}</p>
+          <p><strong>Description:</strong> {{records.categoryDescription}}</p>
+          <p><strong>Created Date Time:</strong> {{records.createdDate |transformTime}}</p>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 g-3">
+        <div class="col">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <!-- Table Header Row -->
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Start</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Is Active</th>
+                <th scope="col">Capacity</th>
+                <th scope="col">Tickets Available</th>
+                <th scope="col">Categories</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf="!records.eventsList || records.eventsList.length == 0">
+                <th scope="row" colspan="9" class="text-center text-bold">No events found for this category</th>
+              </tr>
+              <tr *ngFor="let event of records.eventsList">
+                <th scope="row">
+                  {{event.eventId}}
+                </th>
+                <td>
+                  {{event.eventName}}
+                </td>
+                <td style="width: 30%">
+                  {{event.eventDate | transformTime}}
+                </td>
+                <td>
+                  {{event.eventDuration | transformDuration}}
+                </td>
+                <!-- Is active display -->
+                <td *ngIf="event.eventDuration">
+                  <input type="checkbox" checked>
+                </td>
+
+                <td *ngIf="!event.eventDuration">
+                  <input type="checkbox">
+                </td>
+                <td>
+                  {{event.eventCapacity}}
+                </td>
+                <td>
+                  {{event.eventTicketQty}}
+                </td>
+                <td>
+                  <ng-container *ngFor="let category of event.eventCategoriesList; let last = last">
+                    <span [class]="{'category-cell': true, 'last-cell': last}">
+                      {{ category }}
+                    </span>
+                  </ng-container>
+                </td>
+                <td>
+                  <button class="btn btn-primary" (click)="viewEvent(event.eventId)">View</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<br>
+<div class="text-center">
+  <h2> Update Event </h2>
+  <p> Update selected event </p>
+</div>
+<div class="mt-4 p-5 bg-secondary rounded">
+  <div class="card mb-3">
+    <div class="card-body">
+      <div *ngIf="selectedEvent.eventId">
+        <div class="mb-3 mt-3">
+          <label for="name" class="form-label ">Name: </label>
+          <input type="text" [(ngModel)]="selectedEvent.eventName"
+            class="form-control border border-3 border-secondary" id="name" placeholder="Enter Name" name="eventName"
+            required>
+        </div>
+        <div class="form-group">
+          <label for="Description">Capacity:</label>
+          <textarea [(ngModel)]="selectedEvent.eventCapacity"
+            class="form-control border border-3 border-secondary" id="Description" rows="3"
+            placeholder="Enter Description" name="eventDescription" style="margin: 10px 0px 10px 0px"></textarea>
+        </div>
+        <button type="submit" class="btn btn-warning border-secondary" (click)="submitChanges()">Submit
+          Changes</button>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <img src="/assets/Images/updateevent.png" class="card-img-top" alt="...">
+      <div class="card text-dark bg-light mb-3">
+        <div class="card-body">
+          <div class="row row-cols-1 g-3">
+            <div class="col">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <!-- Table Header Row -->
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngIf="records.length == 0">
+                    <th scope="row" colspan="8" class="text-center text-bold">No records found</th>
+                  </tr>
+                  <tr *ngFor="let record of records">
+                    <th scope="row">
+                      {{record.eventId}}
+                    </th>
+                    <td>
+                      {{record.eventName | transformName}}
+                    </td>
+                    <td>
+                      <img [src]=record.eventImage alt="Event Image" width="100">
+                    </td>
+                    <td style="width: 30%">
+                      {{record.eventDate | transformTime}}
+                    </td>
+                    <!-- Is active display -->
+                    <td>
+                      <button class="btn btn-danger" (click)="updateEvent(record.eventId)">Update</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

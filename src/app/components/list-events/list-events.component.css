@@ -1,0 +1,27 @@
+/* Add this CSS to center the <td> elements */
+table {
+  width: 100%;
+  /* Make sure the table spans the entire width of its container */
+}
+
+table th,
+table td {
+  text-align: center;
+  /* Center-align the text in header cells and data cells */
+}
+
+/* Define the 'category-cell' class to add a border around each cell */
+.category-cell {
+  display: inline-block;
+  border: 1px solid #000;
+  /* Add a 1px solid black border */
+  padding: 4px;
+  /* Add some padding for spacing */
+}
+
+
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}

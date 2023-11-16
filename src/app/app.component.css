@@ -1,0 +1,22 @@
+/* Style for active button */
+.active a {
+    background-color: #fffcf2;
+    color: #403d39 
+}
+
+/* Style for non-active buttons */
+.nav-link {
+    color: #fffcf2;
+}
+
+
+.nav-container{
+    background-color: #252422;
+    padding: 20px;
+}
+
+a{
+    color: #fffcf2;
+    text-decoration: none;
+}
+
